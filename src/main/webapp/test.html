@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+.div1
+{	
+	margin: 0 auto ; 
+}
+.div2
+{
+	margin: auto ;
+	
+}
+.div1 img
+{	
+	width:100px ; 
+}
+.div2 img
+{
+	width : 300px ; 
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("img#simage").click(function(){
+			$("#bimage").attr("src" , $(this).attr("src") ) ;
+		}) ; 
+	}) ; 
+</script>
+</head>
+
+<body>
+	<div class = "div1">
+	<img id = "simage" alt="" src="images/1.jpg">
+	<img id = "simage" alt="" src="images/2.jpg">
+	<img id = "simage" alt="" src="images/3.jpg">
+	<img id = "simage" alt="" src="images/4.jpg">
+	</div>
+	<div class = "div2">
+	<img id = "bimage" src = "images/1.jpg">	
+	</div>
+</body>
+</html>
