@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +28,11 @@ public class ApplicationServiceImpl implements IApplicationService
 	public List<Application> list(long userId) throws Exception
 	{
 		return this.applicationMapper.list(userId) ;
+	}
+
+	public Application getById(long id) throws Exception
+	{
+		return this.applicationMapper.getById(id) ; 
 	}
 	
 	

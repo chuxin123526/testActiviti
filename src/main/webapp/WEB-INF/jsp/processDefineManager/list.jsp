@@ -64,6 +64,7 @@
 			<a href = "#" onclick = "downloadTemplate(${item.deploymentId})">下载模板</a>
 			<a href = "#" onclick = "uploadTemplate(${item.deploymentId})">上传模板</a>
 			<a href = "#" onclick = "updateTemplate(${item.deploymentId})">修改模板</a>
+			<a target = "_blank" href = "springmvc/processDefineManagerAction/seeProcessDiagram?deploymentId=${item.deploymentId}">查看流程图</a>
 		</td>
 		</tr>	
 		</c:forEach>

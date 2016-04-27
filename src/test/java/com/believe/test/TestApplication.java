@@ -25,4 +25,5 @@ public class TestApplication
 			System.out.println(application.getUser().getName());
 		}
 	}
+	
 }

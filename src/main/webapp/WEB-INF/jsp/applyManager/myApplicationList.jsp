@@ -15,14 +15,17 @@
 	<td>申请人</td>
 	<td>申请时间</td>
 	<td>审批信息</td>
+	<td>操作</td>
+	
 	</tr>
 	</thead>
 	<tbody>
 		<c:forEach items = "${myApplicationList}" var = "application">
 		<tr>
 		<td>${application.user.name}</td>
-		<td> </td>
+		<td>${application.updateDate}</td>
 		<td>${application.status}</td>
+		<td><a target="_blank" href = "springmvc/applyManagerAction/seeProcessDiagram?applicationId=${application.id}">查看流程图</a></td>
 		</tr>
 		</c:forEach>
 	</tbody>

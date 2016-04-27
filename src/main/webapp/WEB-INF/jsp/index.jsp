@@ -10,7 +10,6 @@
 body{
 padding-top:70px ; 
 }
-
 </style>
 
 <script type="text/javascript">
@@ -37,6 +36,11 @@ $(document).ready(
 			
 			$("#approveManagerButton").click(function(){
 				var url = "http://localhost:8080/testActiviti/springmvc/approveManagerAction/waitForApprove" ; 
+				$("#dataShow").load(url) ; 
+			}) ;
+			
+			$("#myApplicationListButton").click(function(){
+				var url = "http://localhost:8080/testActiviti/springmvc/applyManagerAction/myApplicationList" ;
 				$("#dataShow").load(url) ; 
 			}) ;
 		}
@@ -94,7 +98,7 @@ $(document).ready(
   <button id = "processDefineManagerButton" type="button" class="list-group-item">流程定义管理</button>
   <button id = "applyButton" type="button" class="list-group-item">起草申请</button>
   <button id = "approveManagerButton" type="button" class="list-group-item">待我审批</button>
-  <button type="button" class="list-group-item">我的申请</button>
+  <button id = "myApplicationListButton" type="button" class="list-group-item">我的申请</button>
 
 </div>
 

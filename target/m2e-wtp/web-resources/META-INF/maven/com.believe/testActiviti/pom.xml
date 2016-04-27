@@ -23,7 +23,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${springframework}</version>
 		</dependency>
-		
+
 		<!-- MySQL驱动 -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -54,6 +54,11 @@
 			<artifactId>activiti-engine</artifactId>
 			<version>${activiti}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-image-generator</artifactId>
+			<version>5.18.0</version>
+		</dependency>
 		<!-- activiti 与 Spring 集成 -->
 		<dependency>
 			<groupId>org.activiti</groupId>
@@ -68,9 +73,9 @@
 			<scope>test</scope>
 		</dependency>
 
-		
 
-		
+
+
 
 		<!-- json -->
 		<dependency>

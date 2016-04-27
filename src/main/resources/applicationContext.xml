@@ -13,6 +13,9 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		destroy-method="close">
@@ -53,7 +56,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 		factory-method="getHistoryService" />
 	<bean id="managementService" factory-bean="processEngine"
 		factory-method="getManagementService" />
-	
+
 	<!-- 注入映射器 -->
 	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.believe.mapper.UserMapper" />
@@ -71,5 +74,5 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 		<property name="mapperInterface" value="com.believe.mapper.ApproveInfoMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	
+
 </beans>

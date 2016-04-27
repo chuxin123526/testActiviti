@@ -19,11 +19,12 @@
 				contentType : false , 
 				processData: false,
 				success : function(data){
-					alert("success") ; 
+					var info = JSON.parse(data) ; 
+					alert(info.info) ;
 					$("#dataShow").load("springmvc/processDefineManagerAction/list") ; 
 				} ,
 				error : function(data){
-					alert('error') ; 
+					alert("error") ; 
 				}
 			}) ; 
 			

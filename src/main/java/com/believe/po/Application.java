@@ -1,6 +1,7 @@
 package com.believe.po;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +19,16 @@ public class Application implements Serializable
 	private long templateId ; 
 	private String processInstanceId ; //流程实例id
 	private User user ; 
+	private Date updateDate ;  
 	
+	public Date getUpdateDate()
+	{
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate)
+	{
+		this.updateDate = updateDate;
+	}
 	public User getUser()
 	{
 		return user;

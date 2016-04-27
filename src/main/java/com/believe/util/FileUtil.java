@@ -40,6 +40,22 @@ public class FileUtil
 		return fileStore.getAbsolutePath() ; 
 	}
 	
+	public static boolean check(MultipartFile file) 
+	{
+		boolean flag = false ; 
+		String contentType = file.getContentType() ; 
+		String doc = "application/msword" ; 
+		String docx = "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ; 
+		String xlsx = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; 
+		String xls = "application/vnd.ms-excel" ; 
+		if(contentType.equals(docx) || contentType.equals(doc) || contentType.equals(xls) || contentType.equals(xlsx))
+		{
+			flag = true ; 
+		}
+		return flag ; 
+	}
+	
+	
 	public static void delete(String path) throws Exception
 	{
 		if(path != null)

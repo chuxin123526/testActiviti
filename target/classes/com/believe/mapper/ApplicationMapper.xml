@@ -9,17 +9,24 @@
   </insert>
   
   <select id = "list" parameterType = "long" resultMap="list">
-      select A.id as application_id , A.userid as user_id , A.status as application_status , U.name as user_name
+      select A.id as application_id , A.userid as user_id , A.status as application_status , U.name as user_name , A.updatedate as application_updateDate
       from activiti_application A inner join activiti_user U on A.userid=U.id 
+      where A.userid=#{userId}
   </select>
   
   <resultMap id="list" type="com.believe.po.Application" >
       <result column="application_id" property="id"/>
+      <result column="application_updateDate" property="updateDate"/>
       <result column="user_id" property="userId" />
       <result column="application_status" property="status" />
       <association property="user" javaType="com.believe.po.User">
           <result column="user_name" property="name"/>
       </association>
   </resultMap>
+  
+  <select id = "getById" parameterType="long" resultType="com.believe.po.Application">
+      select processinstanceid as processInstanceId from activiti_application where 
+      id=#{id}
+  </select>
   
 </mapper>

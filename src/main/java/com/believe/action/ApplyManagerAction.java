@@ -1,15 +1,21 @@
 package com.believe.action;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.activiti.bpmn.model.BpmnModel;
+import org.activiti.engine.ProcessEngineConfiguration;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.image.impl.DefaultProcessDiagramGenerator;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +40,8 @@ public class ApplyManagerAction
 	private RuntimeService runtimeService ; 
 	@Resource
 	private IApplicationService applicationServiceImpl ; 
+	@Resource
+	private ProcessEngineConfiguration processEngineConfiguration ; 
 	
 	@RequestMapping(value = "/list")
 	public String list(Model model) throws Exception
@@ -100,7 +108,7 @@ public class ApplyManagerAction
 		return jsonObject.toString() ; 
 	}
 	
-	@RequestMapping(value = "/myApplicaitonList")
+	@RequestMapping(value = "/myApplicationList")
 	public String myApplicationList(HttpServletRequest httpServletRequest , Model model) throws Exception
 	{
 		User user = (User)httpServletRequest.getSession().getAttribute("user") ; 
@@ -116,4 +124,29 @@ public class ApplyManagerAction
 		
 	}
 	
+	@RequestMapping(value = "/seeProcessDiagram")
+	public void seeProcessDiagram(@RequestParam("applicationId") String applicaitonId , OutputStream outputStream) throws Exception
+	{
+		Application application = this.applicationServiceImpl.getById(Long.parseLong(applicaitonId)) ; 
+		String processInstanceId = application.getProcessInstanceId() ; 
+		ProcessInstance processInstance = 
+				this.runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult() ; 
+		BpmnModel bpmnModel = this.repositoryService.getBpmnModel(processInstance.getProcessDefinitionId());
+		// 得到正在执行的环节
+		List<String> activeIds = this.runtimeService.getActiveActivityIds(processInstance.getId());
+		InputStream inputStream = new DefaultProcessDiagramGenerator().generateDiagram(bpmnModel, "png", activeIds,
+				Collections.<String> emptyList(), this.processEngineConfiguration.getActivityFontName(),
+				this.processEngineConfiguration.getLabelFontName(), null, 1.0);
+		for(String s : activeIds)
+		{
+			System.out.println(s);
+		}
+		byte[] buffer = new byte[1024];
+		int n = 0;
+		while ((n = inputStream.read(buffer)) != -1)
+		{
+			outputStream.write(buffer, 0, n);
+		}
+		
+	}
 }

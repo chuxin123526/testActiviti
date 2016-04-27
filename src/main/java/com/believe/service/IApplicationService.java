@@ -8,4 +8,5 @@ public interface IApplicationService
 {
 	public void add(Application application) throws Exception ; 
 	public List<Application> list(long userId) throws Exception ; 
+	public Application getById(long id) throws Exception ; 
 }
