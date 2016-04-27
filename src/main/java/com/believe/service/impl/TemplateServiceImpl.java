@@ -42,6 +42,11 @@ public class TemplateServiceImpl implements ItemplateService
 	public void update(Template template) throws Exception
 	{
 		this.templateMapper.update(template);
+	}
+
+	public Template getByDeploymentId(String deploymentId) throws Exception
+	{
+		return this.templateMapper.getByDeploymentId(deploymentId) ; 
 	} 
 
 }

@@ -43,6 +43,11 @@
 	{
 		$("#dataShow").load("http://localhost:8080/testActiviti/springmvc/processDefineManagerAction/uploadTemplateUI?deploymentId="+id ) ; 
 	}
+	
+	function downloadTemplate(id)
+	{
+		$("#dataShow").load("http://localhost:8080/testActiviti/springmvc/processDefineManagerAction/downloadTemplate?deploymentId="+id ) ; 
+	}
 
 </script>
 </head>
@@ -61,7 +66,7 @@
 		<td>${item.name}</td>
 		<td>${item.version}</td>
 		<td> <a href = "#" onclick = "processDefinitiondelete(${item.deploymentId})">删除</a>
-			<a href = "#" onclick = "downloadTemplate(${item.deploymentId})">下载模板</a>
+			<a href = "springmvc/processDefineManagerAction/downloadTemplate?deploymentId=${item.deploymentId}" >下载模板</a>
 			<a href = "#" onclick = "uploadTemplate(${item.deploymentId})">上传模板</a>
 			<a href = "#" onclick = "updateTemplate(${item.deploymentId})">修改模板</a>
 			<a target = "_blank" href = "springmvc/processDefineManagerAction/seeProcessDiagram?deploymentId=${item.deploymentId}">查看流程图</a>

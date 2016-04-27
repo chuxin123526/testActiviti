@@ -11,4 +11,5 @@ public interface ItemplateService
 	public void delete(int id) throws Exception ; 
 	public Template getById(int id) throws Exception ;
 	public void update(Template template) throws Exception ; 
+	public Template getByDeploymentId(String deploymentId) throws Exception ; 
 }

@@ -1,5 +1,8 @@
 package com.believe.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -20,6 +23,7 @@ import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.image.impl.DefaultProcessDiagramGenerator;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -171,6 +175,29 @@ public class ProcessDefineManagerAction
 //		}
 
 		inputStream.close();
+		outputStream.close();
+	}
+	
+	@RequestMapping(value = "downloadTemplate")
+	public void downloadTemplate(@RequestParam("deploymentId") String deploymentId , 
+			HttpServletResponse response) throws Exception
+	{
+		Template template = this.templateServiceImpl.getByDeploymentId(deploymentId) ; 
+		String path = template.getPath() ; 
+		File file = new File(path) ;  
+		if(!file.exists())
+		{
+			throw new FileNotFoundException() ; 
+		}
+		InputStream inputStream = new FileInputStream(path) ; 
+		System.out.println(path);
+		System.out.println(template.getName());
+		response.setHeader("Content-Disposition", "attachment; filename="+template.getName());
+		OutputStream outputStream = response.getOutputStream() ; 
+		IOUtils.copy(inputStream, outputStream) ; 
+		
+		//finilly
+		inputStream.close();  
 		outputStream.close();
 	}
 

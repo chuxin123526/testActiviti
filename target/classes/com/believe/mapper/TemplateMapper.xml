@@ -21,6 +21,10 @@
       where id = #{id} 
   </select>
   
+  <select id="getByDeploymentId" parameterType="string" resultType="com.believe.po.Template">
+   select name , path from activiti_template where deploymentid = #{deploymentId}
+  </select>
+  
   <select id="update" parameterType="com.believe.po.Template">
   update activiti_template set name = #{name}  , deploymentId = #{deploymentId} , 
   path = #{path} , size = #{size} where id = #{id}
