@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.believe.mapper.ApplicationMapper">
+  <insert id="add" parameterType="com.believe.po.Application" useGeneratedKeys = "true" keyProperty="id">
+      insert into activiti_application(userid , title , path , status , templateid , processinstanceid)
+      values(#{userId} , #{title} , #{path} , #{status} , #{templateId} , #{processInstanceId})
+  </insert>
+  
+  <select id = "list" parameterType = "long" resultMap="list">
+      select A.id as application_id , A.userid as user_id , A.status as application_status , U.name as user_name , A.updatedate as application_updateDate
+      from activiti_application A inner join activiti_user U on A.userid=U.id 
+      where A.userid=#{userId}
+  </select>
+  
+  <resultMap id="list" type="com.believe.po.Application" >
+      <result column="application_id" property="id"/>
+      <result column="application_updateDate" property="updateDate"/>
+      <result column="user_id" property="userId" />
+      <result column="application_status" property="status" />
+      <association property="user" javaType="com.believe.po.User">
+          <result column="user_name" property="name"/>
+      </association>
+  </resultMap>
+  
+  <select id = "getById" parameterType="long" resultType="com.believe.po.Application">
+      select processinstanceid as processInstanceId from activiti_application where 
+      id=#{id}
+  </select>
+  
+</mapper>

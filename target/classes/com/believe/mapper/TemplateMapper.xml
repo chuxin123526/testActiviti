@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.believe.mapper.TemplateMapper">
+  <select id="list" resultType="com.believe.po.Template">
+    select * from activiti_template
+  </select>
+  
+  <insert id="add" parameterType="com.believe.po.Template">
+      insert into activiti_template(name , deploymentId , path , size)
+      values(#{name} , #{deploymentId} , #{path} , #{size})
+  </insert>
+  
+  <delete id="delete" parameterType="int">
+      delete from activiti_template where id = #{id}
+  </delete>
+  
+  <select id = "getById" parameterType = "int" resultType = "com.believe.po.Template">
+      select id , name , deploymentId , path , size , updatedate from activiti_template 
+      where id = #{id} 
+  </select>
+  
+  <select id="getByDeploymentId" parameterType="string" resultType="com.believe.po.Template">
+   select name , path from activiti_template where deploymentid = #{deploymentId}
+  </select>
+  
+  <select id="update" parameterType="com.believe.po.Template">
+  update activiti_template set name = #{name}  , deploymentId = #{deploymentId} , 
+  path = #{path} , size = #{size} where id = #{id}
+  </select>
+  
+  <delete id = "deleteByDeploymentId" parameterType = "string" >
+      delete from activiti_template where deploymentid = #{deploymentId} 
+  </delete>
+  
+</mapper>
