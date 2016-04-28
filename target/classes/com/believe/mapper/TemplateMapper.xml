@@ -29,9 +29,7 @@
   update activiti_template set name = #{name}  , deploymentId = #{deploymentId} , 
   path = #{path} , size = #{size} where id = #{id}
   </select>
-  
   <delete id = "deleteByDeploymentId" parameterType = "string" >
       delete from activiti_template where deploymentid = #{deploymentId} 
   </delete>
-  
 </mapper>

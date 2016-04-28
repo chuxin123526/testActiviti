@@ -94,11 +94,19 @@ $(document).ready(
 </nav>
 <div class = "container">
 <div class="list-group col-lg-3">
+<<<<<<< HEAD
  <%--<button id = "templateManagerButton" type="button" class="list-group-item">模板管理</button> --%> 
+=======
+  <button id = "templateManagerButton" type="button" class="list-group-item">模板管理</button>
+>>>>>>> 40bfaac1f307f5aeac0efd1c1f7141d1420f2638
   <button id = "processDefineManagerButton" type="button" class="list-group-item">流程定义管理</button>
   <button id = "applyButton" type="button" class="list-group-item">起草申请</button>
   <button id = "approveManagerButton" type="button" class="list-group-item">待我审批</button>
   <button id = "myApplicationListButton" type="button" class="list-group-item">我的申请</button>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 40bfaac1f307f5aeac0efd1c1f7141d1420f2638
 </div>
 
 <div id = "dataShow" class="list-group col-lg-9">

@@ -55,9 +55,7 @@ public class TemplateServiceImpl implements ItemplateService
 		{
 			this.templateMapper.deleteByDeploymentId(deploymentId) ; 
 		}
-	}
-
 	
-	
+	} 
 
 }

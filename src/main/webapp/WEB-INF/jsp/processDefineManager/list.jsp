@@ -18,10 +18,13 @@
 	
 	function processDefinitiondelete(id)
 	{
+<<<<<<< HEAD
 		if(!confirm("delete?"))
 			{
 				return ;	
 			}
+=======
+>>>>>>> 40bfaac1f307f5aeac0efd1c1f7141d1420f2638
 		var url = "http://localhost:8080/testActiviti/springmvc/processDefineManagerAction/delete" ; 
 		$.ajax({
 			url : url , 
@@ -72,7 +75,11 @@
 		<td> <a href = "#" onclick = "processDefinitiondelete(${item.deploymentId})">删除</a>
 			<a href = "springmvc/processDefineManagerAction/downloadTemplate?deploymentId=${item.deploymentId}" >下载模板</a>
 			<a href = "#" onclick = "uploadTemplate(${item.deploymentId})">上传模板</a>
+<<<<<<< HEAD
 			<a href = "#" onclick = "updateTemplate(${item.deploymentId})">更新模板</a>
+=======
+			<a href = "#" onclick = "updateTemplate(${item.deploymentId})">修改模板</a>
+>>>>>>> 40bfaac1f307f5aeac0efd1c1f7141d1420f2638
 			<a target = "_blank" href = "springmvc/processDefineManagerAction/seeProcessDiagram?deploymentId=${item.deploymentId}">查看流程图</a>
 		</td>
 		</tr>	

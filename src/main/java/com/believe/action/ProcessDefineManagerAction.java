@@ -97,6 +97,7 @@ public class ProcessDefineManagerAction
 		this.repositoryService.deleteDeployment(id + "", true);
 		//删除模板
 		this.templateServiceImpl.deleteByDeploymentId(id + "") ; 
+
 		JSONObject jsonObjectInfo = new JSONObject();
 		jsonObjectInfo.put("info", "success");
 		return jsonObjectInfo.toString();
