@@ -54,7 +54,7 @@ public class ProcessDefineManagerAction
 	@RequestMapping(value = "/list")
 	public String list(Model model) throws Exception
 	{
-		//GitWorkSpace update
+		//GitWorkSpace updateupdate
 		// 查询流程定义列表
 		List<ProcessDefinition> processDefinitionList = this.repositoryService.createProcessDefinitionQuery().list();
 		model.addAttribute("processDefinitionList", processDefinitionList);
