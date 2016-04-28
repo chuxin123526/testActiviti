@@ -54,11 +54,6 @@ public class ProcessDefineManagerAction
 	@RequestMapping(value = "/list")
 	public String list(Model model) throws Exception
 	{
-		Logger logger = Logger.getLogger(this.getClass()) ; 
-		logger.error("testERROR");
-		logger.info("testINFO");
-		logger.debug("testDEBUG");
-		logger.warn("testWARN") ; 
 		// 查询流程定义列表
 		List<ProcessDefinition> processDefinitionList = this.repositoryService.createProcessDefinitionQuery().list();
 		model.addAttribute("processDefinitionList", processDefinitionList);
